@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- CTD Capstone: FlowSound
+Author: Yuliza Saucedo 
+
+-->
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- viewport -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>FlowSound</title>
+    <link href="css/normalize.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+    <!-- <link href="css/skip-navigation.css" rel="stylesheet"> -->
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>FlowSound</h1>
+        <!-- side panel for audio toggle from : https://www.w3schools.com/howto/howto_js_collapse_sidepanel.asp-->
+        <div id="mySidepanel" class="sidepanel">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+            >&times;</a
+          >
+          <section id="audio-player-container">
+            <h2>Toggle Audios</h2>
+            <aside data-media>
+              <audio
+                src="assets/sound/sample1.wav"
+                preload="auto"
+              ></audio>
+              <span id="current">00:00</span>
+              <span id="total">01:00</span>
+              <input
+                type="range"
+                min="0"
+                max="1000"
+                step="1"
+                value="0"
+                oninput="updateTime(this.value)"
+              />
+              <input
+                id="play"
+                data-button="blue"
+                type="button"
+                onclick="unPause(this)"
+                value="Play"
+              />
+              <input
+                data-button="blue"
+                type="button"
+                onclick="rewind()"
+                value="Rewind"
+              />
+              <input data-button=blue type=button onclick=seek('back',15)
+              value="← 15"> <input data-button=blue type=button
+              onclick=seek('forward',15) value="15 →">
+              <input
+                data-button="blue"
+                type="button"
+                onclick="turbo(this)"
+                value="Speed up"
+              />
+            </aside>
+            <aside data-media>
+              <audio
+                src="assets/sound/sample1.wav"
+                preload="auto"
+              ></audio>
+              <span id="current">00:00</span>
+              <span id="total">00:00</span>
+              <input
+                type="range"
+                min="0"
+                max="1000"
+                step="1"
+                value="0"
+                oninput="updateTime(this.value)"
+              />
+              <input
+                id="play"
+                data-button="blue"
+                type="button"
+                onclick="unPause(this)"
+                value="Play"
+              />
+              <input
+                data-button="blue"
+                type="button"
+                onclick="rewind()"
+                value="Rewind"
+              />
+              <input data-button=blue type=button onclick=seek('back',15)
+              value="← 15"> <input data-button=blue type=button
+              onclick=seek('forward',15) value="15 →">
+              <input
+                data-button="blue"
+                type="button"
+                onclick="turbo(this)"
+                value="Speed up"
+              />
+            </aside>
+            <!-- <audio id="audio1">
+              <source src="assets/sound/sample1.wav" />
+            </audio>
+            <audio id="audio2">
+              <source src="assets/sound/mouth-noises.wav" />
+            </audio> -->
+            <!-- <button id="mute-icon1">Mute</button> -->
+            <!-- <button class="playpause" onclick="audiotog()">Audio toggle</button> -->
+            <!-- <button id="mute-icon2">Mute</button> -->
+            <!-- <button class="playpause" onclick="audiotog()">Audio toggle</button> -->
+          </section>
+        </div>
+        <button class="openbtn" onclick="openNav()">&#9776;</button>
+        <!--- side panel end  -->
+      </header>
+      <!-- <main id="main-description">
+        <section>
+          <h2>Welcome to FlowSound</h2>
+        </section>
+      </main> -->
+      <svg
+        id="animation1"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns="http://www.w3.org/2000/svg"
+        width="80%"
+        height="70%"
+        viewBox="-80 150 744 1052"
+        id="svg2"
+        version="1"
+      >
+        <path
+          stroke-dashoffset="6265"
+          stroke-dasharray="6265"
+          d="m351 487c0 8-11 4-14-1-6-11 4-24 15-27 19-5 37 11 40 30 4 27-18 50-44 53-35 4-64-25-66-59-3-42 32-77 73-79 50-3 90 39 92 88 2 57-46 104-102 105-65 2-117-53-119-117-1-72 60-131 131-132 80-1 144 67 145 146 1 87-74 158-160 158-95 0-171-81-171-175 0-102 88-185 190-184 110 1 198 95 197 204C557 615 456 709 340 708 215 706 115 598 117 475 119 342 233 236 364 238 504 240 616 361 614 500 611 648 484 766 337 763 182 760 58 626 61 472 65 309 206 179 367 183c170 4 306 151 302 320-4 178-158 319-335 315"
+          style="fill: none; stroke: #000"
+          stroke-width="5"
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            values="6265;0;6265;0"
+            dur="120s"
+            fill="freeze"
+          />
+        </path>
+      </svg>
+      <!-- <aside id="exercise1">
+        <section>
+          
+          <!-- <img src="assets/exercise1.jpg" alt="exercise 1 visual graphic" /> -->
+      <!-- </section>
+      </aside> -->
+      -->
+      <!-- second possible exercise here: -->
+      <!-- <aside id="exercise2">
+        <section>
+            <h3>two</h3>
+        </section>
+      </aside> -->
+      <footer>
+        <small>Designed by Yuliza Saucedo</small>
+      </footer>
+    </div>
+    <!-- end container -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+      integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="java/main.js"></script>
+  </body>
+</html>
+
+<!-- 
+src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+      integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" -->

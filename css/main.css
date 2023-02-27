@@ -1,0 +1,326 @@
+/*scroll to top button refrenced from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_scroll_to_top     */
+
+body {
+    font-family: Verdana, sans-serif;
+    font-size: 16px;
+    background: #FFF7DB;
+  }
+  
+  h1,
+  h2,
+  h3 {
+    font-weight: bold;
+    padding: 0.2em 0;
+    font-family: Georgia, serif;
+  }
+  
+  h2 {
+    font-size: 1.25em;
+  }
+  
+  p {
+    margin: 1.8em 0;
+    line-height: 1.8em;
+  }
+  
+  header,
+  main,
+  aside,
+  footer {
+    padding: 1em;
+  }
+  
+  .container {
+    margin: 0 auto;
+    background: #FFF7DB;
+    display: grid;
+    width: 75vw;
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "heady"
+      /* "mainy" dots are needed as placeholders or else it'll EXPLODE */
+      "exercise1"
+      /* "exercise1 exercise2" for two exercises */
+      "footy";
+  }
+  
+  header {
+    grid-area: heady;
+    text-align: center;
+  }
+  
+  main {
+    grid-area: mainy;
+    background: black;
+    max-height: 100%;
+  }
+  
+  #exercise1 {
+    grid-area: exercise1;
+    justify-self: center;
+    background-color: black;
+    font-size: 14px;
+    margin: 2vw;
+    border-radius: 20px;
+    line-height: 1.8em;
+  }
+
+  #animation1 {
+  color: black;
+  }
+  
+  #tools {
+    line-height: 1.8em;
+  }
+
+  #audio.player.container{
+    background-color: lightgreen;
+  }
+  
+   img {
+    max-width: 100%;
+    max-height: 50vh;
+   
+  }
+  
+  footer {
+    grid-area: footy;
+    text-align: center;
+  }
+
+
+  /* The sidepanel menu from : https://www.w3schools.com/howto/howto_js_collapse_sidepanel.asp */
+.sidepanel {
+    height: 250px; /* Specify a height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    right: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+  }
+  
+  /* The sidepanel links */
+  .sidepanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidepanel a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 36px;
+    margin-right: 50px;
+    color: white; 
+  }
+  
+  /* Style the button that is used to open the sidepanel */
+  .openbtn {
+    font-size: 20px;
+    justify-self: end;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: orange;
+    padding: 10px 15px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+    background-color: grey;
+  }
+
+  
+  /* style audio toggle buttons */ 
+  /* .button {
+    background-color: #4CAF50; /* Green */
+   /* border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  } */
+  
+  /* #playpause {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+  } */
+  
+  /* #playpause:hover {
+    background-color: #4CAF50;
+    color: white;
+  } */
+
+  [data-media],
+[data-media] *,
+[data-media] *:before,
+[data-media] *:after {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: auto;
+}
+[data-media],
+[data-media] * {
+  font-size: 10pt;
+  line-height: 1;
+  font-family: 'Source Sans Pro', 'Open Sans', Roboto, 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', 'Myriad Pro', 'Segoe UI', Myriad, Helvetica, 'Lucida Grande', 'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', Tahoma, Geneva, Arial, sans-serif;
+}
+[data-media] {
+  border: 1px solid #eee;
+  padding: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  background: #FFF7DB;
+  border-radius: 3px;
+}
+[data-media]:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+[data-media] [type=range] {
+  width: 100%;
+  padding: 0;
+}
+[data-media] audio {
+  display: none;
+}
+[data-media] #current {
+  float: left;
+}
+[data-media] #total {
+  float: right;
+}
+[data-media] [data-button] {
+  font-size: 12pt;
+  margin-left: 5px;
+}
+[data-media] #play {
+  min-width: 70px;
+}
+@media (max-width: 200px) {
+  [data-media] [data-button] {
+    width: 100%;
+    margin: 10px 0 0 0;
+  }
+}
+@media (min-width: 201px) and (max-width: 415px) {
+  [data-media] [data-button] {
+    width: calc(50% - 5px);
+    margin: 10px 0 0 0;
+    margin-bottom: 0;
+    float: left;
+  }
+  [data-media] [data-button]:nth-child(even) {
+    margin-left: 10px;
+  }
+  [data-media] [data-button]:last-child {
+    width: 100%;
+  }
+}
+  /* side panel end */ 
+  
+/* animation css*/
+
+
+/* animation css end */ 
+
+
+
+
+
+
+
+
+  
+  /* link style
+   a:link {
+    text-decoration: none;
+    color: black;
+  }
+  
+   a:visited {
+    color: black;
+  }
+  
+  a:link {
+    color: blue;
+  } */
+  
+  /* for smaller screens media query
+  @media screen and (max-width: 640px) {
+    header {
+      padding-top: 40px;
+      border-bottom: 1px solid grey;
+    }
+    .container {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "heady"
+        "navvy"
+        "mainy"
+        "aside1"
+        "footy";
+    }
+  
+    nav {
+      border: none;
+      border-bottom: 1px solid grey;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    nav ul {
+      flex-flow: column nowrap;
+      text-align: center;
+      padding-left: 0;
+    }
+  
+    ul li a {
+      display: block; /*makes it so you can clip the whole rectangle and still access the link    */
+  /* 
+      max-width: 100%;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      text-align: center;
+      background: white;
+    }
+  
+    #why-link {
+      border-top: 1px solid grey;
+      border-bottom: 1px solid grey;
+    }
+  
+    #impl-link {
+      border-bottom: 1px solid grey;
+    }
+  } /* end media query*/
+   
