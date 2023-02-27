@@ -40,7 +40,7 @@ var audioplayer = function (p) {
   // preload webpage audios
   p.preload = function () {
     // p.soundFormats('wav', 'mp3');
-    audio_one = p.loadSound("../assets/sound/crinkling.wav");
+    audio_one = p.loadSound("assets/sound/crinkling.wav");
   };
 
   p.setup = function () {
