@@ -78,24 +78,24 @@ var audioplayer = function (p) {
       my > this.y &&
       my < this.y + this.h) {
       // print("clicked!")
-      if (!this.audio_one && p.mouseY > 75 && p.mouseY < 105) {
+      if (!this.audio_one && p.mouseY > 100 && p.mouseY < 150) {
         console.log("on");
         this.audio_one = true; 
         audio_one.loop();
         // print("on!"); 
         return;
-      } else if (!this.audio_two && p.mouseY > 175 && p.mouseY < 205) {
+      } else if (!this.audio_two && p.mouseY > 220 && p.mouseY < 270) {
         audio_two.loop();
         this.audio_two = true;
         return;
       } 
-      else if (this.audio_one && p.mouseY > 75 && p.mouseY < 105) {
+      else if (this.audio_one && p.mouseY > 100 && p.mouseY < 150) {
         console.log("off")
         this.audio_one = false; 
         audio_one.pause();
         // print("pause!");
         return;
-      } else if (this.audio_two && p.mouseY > 175 && p.mouseY < 205) {
+      } else if (this.audio_two && p.mouseY > 220 && p.mouseY < 250) {
         audio_two.pause();
         this.audio_two = false;
         return;}
