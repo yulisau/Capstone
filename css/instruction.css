@@ -1,0 +1,116 @@
+body {
+    font-family: Verdana, sans-serif;
+    font-size: 14px;
+    background: #FFF7DB;
+  }
+  
+  h1 {
+    text-align: center;
+    font-weight: bold;
+    padding: 0.2em 0;
+    font-family: Georgia, serif;
+    color: black; 
+  }
+  
+  h2 {
+    font-size: 1.25em;
+    text-align:left;
+    padding: 0.2em 0;
+    font-family: Georgia, serif;
+  }
+  h3, h4 {
+    font-family: Georgia, serif;
+  }
+  
+  p {
+    margin: 1.8em 0;
+    line-height: 1.8em;
+  }
+  
+  header,
+  main,
+  aside,
+  footer {
+    padding: 1em;
+  }
+  
+  .container {
+    margin: 0 auto;
+    background: #FFF7DB;
+    display: grid;
+    width: 75vw;
+    height: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "heady  heady"
+      "mainy  mainy"
+      "aside1 aside2" 
+      "asmr    tips"
+      "footy  footy";
+  }
+  
+  #second_title{
+    text-align: center;
+  }
+
+  #aside1 {
+    grid-area: aside1;
+    justify-self: left;
+    justify-items: left;
+    /* margin-bottom: 1.25em; */
+    padding: 1em;
+  }
+
+  #aside2 {
+    grid-area: aside2;
+    justify-self: right;
+    justify-items: right;
+    /* margin-bottom: 1.25em; */
+    padding: 1em;
+  }
+
+  #asmr {
+    padding: 1em;
+    /* max-width: 400px; */
+  }
+
+  #tips-a {
+    border: 1px solid black;
+    border-radius: 1em;
+    align-self: center;
+  }
+
+  header {
+    grid-area: heady;
+    justify-self: center;
+  }
+  
+  main {
+    grid-area: mainy;
+    background: #fff1bd;
+    border-radius: 1em;
+    max-height: 100%;
+    max-height: 1200px;
+  }
+
+  footer{
+    grid-area: footy;
+    justify-self: center;
+  }
+
+  img{
+    align-self: center;
+    border: 1px solid black; 
+    background-color: #fff1bd;
+    max-width: 400px;
+  }
+
+  #graphic-gif {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 72%;
+  
+  }
+
+

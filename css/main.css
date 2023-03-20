@@ -7,8 +7,8 @@ body {
   }
   
   h1,
-  h2,
   h3 {
+    text-align: center;
     font-weight: bold;
     padding: 0.2em 0;
     font-family: Georgia, serif;
@@ -16,6 +16,9 @@ body {
   
   h2 {
     font-size: 1.25em;
+    text-align:left;
+    padding: 0.2em 0;
+    font-family: Georgia, serif;
   }
   
   p {
@@ -47,7 +50,7 @@ body {
   
   header {
     grid-area: heady;
-    text-align: center;
+    
   }
   
   main {

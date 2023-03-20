@@ -12,3 +12,12 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidepanel").style.width = "0";
 }
+
+// function openInfo() {
+//   document.getElementById("myNav").style.width = "100%";
+// }
+
+// /* Close when someone clicks on the "x" symbol inside the overlay */
+// function closeInfo() {
+//   document.getElementById("myNav").style.width = "0%";
+// }
