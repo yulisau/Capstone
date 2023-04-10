@@ -71,6 +71,7 @@ main {
   max-height: 100%;
 }
 
+
 #exercise1 {
   grid-area: exercise1;
   justify-self: center;
@@ -154,6 +155,168 @@ footer {
 .openbtn:hover {
   background-color: grey;
 }
+
+/* slider style */
+input[type=range].sliderStyle {
+  width: 100%;
+  margin: 5.5px 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+}
+input[type=range].sliderStyle:focus {
+  outline: none;
+}
+input[type=range].sliderStyle::-webkit-slider-runnable-track {
+  background: #fff7db;
+  border: 0.2px solid white;
+  border-radius: 6px;
+  width: 100%;
+  height: 15px;
+  cursor: pointer;
+}
+input[type=range].sliderStyle::-webkit-slider-thumb {
+  margin-top: -5.7px;
+  width: 26px;
+  height: 26px;
+  background: #ffffff;
+  border: 1px solid white;
+  border-radius: 50px;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+input[type=range].sliderStyle:focus::-webkit-slider-runnable-track {
+  background: #fffdf5;
+}
+input[type=range].sliderStyle::-moz-range-track {
+  background: #fff7db;
+  border: 0.2px solid white;
+  border-radius: 6px;
+  width: 100%;
+  height: 15px;
+  cursor: pointer;
+}
+input[type=range].sliderStyle::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  background: #ffffff;
+  border: 1px solid white;
+  border-radius: 50px;
+  cursor: pointer;
+}
+input[type=range].sliderStyle::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 6.5px 0;
+  color: transparent;
+  width: 100%;
+  height: 15px;
+  cursor: pointer;
+}
+input[type=range].sliderStyle::-ms-fill-lower {
+  background: #fff1c2;
+  border: 0.2px solid white;
+  border-radius: 12px;
+}
+input[type=range].sliderStyle::-ms-fill-upper {
+  background: #fff7db;
+  border: 0.2px solid white;
+  border-radius: 12px;
+}
+input[type=range].sliderStyle::-ms-thumb {
+  width: 26px;
+  height: 26px;
+  background: #ffffff;
+  border: 1px solid white;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 0px;
+  /*Needed to keep the Edge thumb centred*/
+}
+input[type=range].sliderStyle:focus::-ms-fill-lower {
+  background: #fff7db;
+}
+input[type=range].sliderStyle:focus::-ms-fill-upper {
+  background: #fffdf5;
+}
+/*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
+how to remove the virtical space around the range input in IE*/
+@supports (-ms-ime-align:auto) {
+  /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+  input[type=range].sliderStyle {
+    margin: 0;
+    /*Edge starts the margin from the thumb, not the track as other browsers do*/
+  }
+} 
+
+input[type=range]{
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 10px;
+  background: white;
+  border: .5px solid black;
+  border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: goldenrod;
+  margin-top: -4px;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+/* .sliders{
+  width: 200px;
+  background-color: transparent;
+  /* Removes some defaults 
+  -webkit-appearance: none;
+}
+
+.sliders:focus {
+  
+  /* Stops the default outline showing up 
+  outline: none;
+}
+
+/* This is the "track" that the slider sits on 
+.sliders::-webkit-slider-runnable-track {
+  background: white;
+  height: 3px;
+  -webkit-appearance: none;
+  
+  /* Turns the cursor into the hand pointer icon when hovering over the slider  
+  cursor: pointer;
+  
+} */
+
+/* This is the moveable bit of the slider, known as the "thumb"
+.sliders::-webkit-slider-thumb {
+  width: 15px;
+  height: 15px;
+  background: grey;
+  cursor: pointer;
+  -webkit-appearance: none;
+  
+  /* negative top padding moves it up
+  margin-top: -6px;
+
+  /* Border radius gives rounded corners, if they're big enough, you end up with circles 
+  border-radius: 8px;
+  
+} */
 
 /*audio toggles area */
 

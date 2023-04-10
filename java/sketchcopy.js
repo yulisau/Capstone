@@ -34,13 +34,13 @@ var graphic = function (p) {
     p.background(0);
 
     mopacity = p.createSlider(20, 100, 100, 10);
-    mopacity.position(p.width/2 + 100, p.height+200);
+    mopacity.position(p.width/2 - 100, p.height+240);
     esize = p.createSlider(0, 50, 25, 5);
-    esize.position(p.width/2+300, p.height+200);
+    esize.position(p.width/2+ 100, p.height+240);
     esize2 = p.createSlider(0, 50, 25, 5);
-    esize2.position(p.width/2+500, p.height+200);
+    esize2.position(p.width/2+ 300, p.height+240);
     eopacity = p.createSlider(0, 100, 20, 10);
-    eopacity.position(p.width/2+700, p.height+200);
+    eopacity.position(p.width/2 + 500, p.height+240);
   };
 
   // drawing graphic
@@ -123,8 +123,8 @@ var audioplayer = function (p) {
     this.r = r;
     // is button clicked set to false
     this.audio_one, this.audio_two, this.audio_three, this.audio_four;
-    // this.audio_one = false;
-    // this.audio_two = false;
+    
+  
     this.click = function (mx, my) {
       // print(this.audio_one);
       // Check to see if a point is inside the rectangle
@@ -136,11 +136,15 @@ var audioplayer = function (p) {
       ) {
         // print("clicked!")
         if (!this.audio_one && p.mouseY > 80 && p.mouseY < 130) {
+          audio_one.setVolume(volumeone.value());
+          audio_one.rate(speedone.value());
           this.audio_one = true;
-          amp.setInput(audio_one);
+          // amp.setInput(audio_one);
           audio_one.loop();
-          return r;
+          return;
         } else if (!this.audio_two && p.mouseY > 190 && p.mouseY < 240) {
+          audio_two.setVolume(volumetwo.value());
+          audio_two.rate(speedtwo.value());
           audio_two.loop();
           this.audio_two = true;
           return;
@@ -149,6 +153,8 @@ var audioplayer = function (p) {
           audio_one.pause();
           return;
         } else if (this.audio_two && p.mouseY > 190 && p.mouseY < 240) {
+          audio_three.setVolume(volumethree.value());
+          audio_three.rate(speedthree.value());
           audio_two.pause();
           this.audio_two = false;
           return;
@@ -157,6 +163,8 @@ var audioplayer = function (p) {
           this.audio_three = false;
           return;
         } else if (!this.audio_three && p.mouseY > 300 && p.mouseY < 350) {
+          audio_three.setVolume(volumethree.value());
+          audio_three.rate(speedthree.value());
           this.audio_three = true;
           audio_three.loop();
           return;
@@ -165,6 +173,8 @@ var audioplayer = function (p) {
           this.audio_four = false;
           return;
         } else if (!this.audio_four && p.mouseY > 410 && p.mouseY < 460) {
+          audio_four.setVolume(volumefour.value());
+          audio_four.rate(speedfour.value());
           this.audio_four = true;
           audio_four.loop();
           return;
@@ -177,10 +187,14 @@ var audioplayer = function (p) {
     this.display = function () {
       p.rectMode(p.CORNER);
       p.fill(255);
+      p.stroke('black');
+      p.strokeWeight(0.5);
       p.rect(this.x, this.y, this.w, this.h);
+      p.noStroke();
       p.fill(0);
       p.textSize(10);
       p.text("Play", this.x + 15, this.y + 20);
+      console.log(volumeone.value()); 
     };
   }
 
@@ -189,11 +203,13 @@ var audioplayer = function (p) {
     p.rectMode(p.CENTER);
     canvas.position(40, 125);
     canvas.parent("audio-area");
-    //first audio
+
+    // first audio
     volumeone = p.createSlider(0, 1, 0.5, 0.1);
     volumeone.parent("audio-area");
     volumeone.position(90, 160);
     volumeone.style("width", "200px");
+    
 
     speedone = p.createSlider(0.5, 3, 1, 0.5);
     speedone.parent("audio-area");
@@ -234,8 +250,8 @@ var audioplayer = function (p) {
     speedfour.style("width", "100px");
 
     // audio toggle values
-    audio_one.setVolume(volumeone.value());
-    audio_one.rate(speedone.value());
+    // audio_one.setVolume(volumeone.value());
+    // audio_one.rate(speedone.value());
 
     // audio_two.setVolume(volumetwo.value());
     // audio_two.rate(speedtwo.value());

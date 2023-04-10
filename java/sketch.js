@@ -133,11 +133,14 @@ var audioplayer = function (p) {
     };
     this.display = function () {
       p.rectMode(p.CORNER);
+      p.stroke('black');
+      p.strokeWeight(4);
       p.fill(255);
       p.rect(this.x, this.y, this.w, this.h);
-      p.fill(0);
+      // p.fill(0);
       p.textSize(10);
       p.text("Play", this.x + 15, this.y + 20);
+      
     };
   }
 
@@ -147,10 +150,13 @@ var audioplayer = function (p) {
     canvas.position(40, 125);
     canvas.parent("audio-area");
     //first audio
+  
+    // volumeone.style('color :black');
     volumeone = p.createSlider(0, 1, 0.5, 0.1);
     volumeone.parent("audio-area");
     volumeone.position(90, 160);
     volumeone.style("width", "200px");
+   
 
     speedone = p.createSlider(0.5, 3, 1, 0.5);
     speedone.parent("audio-area");
@@ -162,6 +168,7 @@ var audioplayer = function (p) {
     volumetwo.parent("audio-area");
     volumetwo.position(90, 270);
     volumetwo.style("width", "200px");
+    volumetwo.addClass("styleSlider");
 
     speedtwo = p.createSlider(0.5, 3, 1, 0.5);
     speedtwo.parent("audio-area");
