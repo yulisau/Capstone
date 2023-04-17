@@ -30,6 +30,7 @@ body {
   header,
   main,
   aside,
+  nav,
   footer {
     padding: 1em;
   }
@@ -42,7 +43,9 @@ body {
     height: 100%;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
+    
       "heady  heady"
+      "navvy  navvy"
       "mainy  mainy"
       "aside1 aside2" 
       "tips    aside2"
@@ -52,6 +55,37 @@ body {
   
   #second_title{
     text-align: center;
+  }
+
+  .nav-bar{
+    grid-area: navvy;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #111;
   }
 
   #aside1 {
