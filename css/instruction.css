@@ -18,8 +18,9 @@ body {
     padding: 0.2em 0;
     font-family: Georgia, serif;
   }
-  h3, h4 {
+  h3, h4, h5 {
     font-family: Georgia, serif;
+    color: #9344C2; 
   }
   
   p {
@@ -48,7 +49,7 @@ body {
       "navvy  navvy"
       "mainy  mainy"
       "aside1 aside2" 
-      "tips    aside2"
+      "inst   tips"
       "asmr    asmr"
       "footy  footy";
   }
@@ -57,51 +58,56 @@ body {
     text-align: center;
   }
 
-  .nav-bar{
+  #navbar{
     grid-area: navvy;
-    text-align: center;
-    display: flex;
+    font-family: Georgia, serif;
+    /* text-align: center; */
     justify-content: space-between;
-    align-items: center;
+    text-align: center;
+    font-size: 16px;
+
+    /* align-items: center; */
   }
 
   ul {
     list-style-type: none;
     display: flex;
+    /* text-align: center; */
     align-items: center;
-    margin: 0;
-    padding: 0;
+    /* padding-left: 25vw; */
     overflow: hidden;
-    background-color: #333;
+    background-color: #FFFDF5;
   }
   
-  li a {
+li a {
     display: block;
-    color: white;
-    text-align: center;
+    color: black;
+    /* text-align: center; */
+    align-items: center;
     padding: 14px 16px;
     text-decoration: none;
   }
   
   /* Change the link color to #111 (black) on hover */
-  li a:hover {
-    background-color: #111;
+li a:hover {
+    background-color: #8b8b8b;
   }
-
+.accent{
+  color: #9344C2;
+  font-size: 16px;
+}
   #aside1 {
     grid-area: aside1;
     justify-self: left;
     justify-items: left;
-    /* margin-bottom: 1.25em; */
-    padding: 1em;
+    padding: 1.2em;
   }
 
   #aside2 {
     grid-area: aside2;
     justify-self: right;
     justify-items: right;
-    /* margin-bottom: 1.25em; */
-    padding: 1em;
+    padding: 1.2em;
   }
 
   #asmr {
@@ -117,6 +123,10 @@ body {
     border-radius: 1em;
     align-self:first baseline;
     padding: 0, 4; 
+  }
+
+  #inst{
+    grid-area: inst;
   }
 
   header {
@@ -152,5 +162,10 @@ body {
   width: 72%;
   
   }
+
+  .asmrlinks {
+    font-size: 16px;
+  }
+ 
 
 
