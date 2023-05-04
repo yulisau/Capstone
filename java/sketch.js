@@ -96,6 +96,7 @@ var audioplayer = function (p) {
           audio_one.loop();
           audio_one.setVolume(volumeone.value());
           audio_one.rate(speedone.value());
+          
           return r;
         } else if (!this.audio_two && p.mouseY > 190 && p.mouseY < 240) {
           audio_two.loop();

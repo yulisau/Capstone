@@ -24,23 +24,23 @@ var graphic = function (p) {
   // var distance = 150;
 
   p.setup = function () {
-    var canvas = p.createCanvas(510, 510);
+    var canvas = p.createCanvas(1200, 800);
     p.frameRate(30);
     centerX = p.width / 2;
-    centerY = p.height / 2;
+    centerY = p.height / 2 - 140;
     p.noStroke();
     p.ellipseMode(p.CENTER);
     canvas.parent("exercise-canvas"); //putting graphic canvas inside main div
-    p.background(0);
+    p.background(255);
 
     mopacity = p.createSlider(20, 100, 100, 10);
-    mopacity.position(p.width/2 - 100, p.height+240);
+    mopacity.position(centerX - 200, p.height - 80);
     esize = p.createSlider(0, 50, 25, 5);
-    esize.position(p.width/2+ 100, p.height+240);
+    esize.position(centerX, p.height - 80 );
     esize2 = p.createSlider(0, 50, 25, 5);
-    esize2.position(p.width/2+ 300, p.height+240);
+    esize2.position(centerX+ 200, p.height - 80 );
     eopacity = p.createSlider(0, 100, 20, 10);
-    eopacity.position(p.width/2 + 500, p.height+240);
+    eopacity.position(centerX + 400, p.height - 80 );
   };
 
   // drawing graphic
@@ -74,18 +74,23 @@ var graphic = function (p) {
       var posY4 =
         centerY + arc_distance * p.sin(p.radians(angleObject * i - angle));
   
-      
       p.fill(r, g, b);
       p.noStroke();
       p.ellipse(posX, posY, 20, 20);
       p.fill(r, g, b,eopacity.value());
       p.ellipse(posX4, posY4, 10, 10);
       p.noFill();
-     p.stroke(r - 100, g - 100, b - 100);
-     p.arc(posX2, posY2, esize.value(), esize.value(), 0, p.PI);
+      p.stroke(r - 100, g - 100, b - 100);
+      p.arc(posX2, posY2, esize.value(), esize.value(), 0, p.PI);
       p.arc(posX3, posY3, esize2.value(), esize2.value(), 0, p.PI);
 
     };
+    p.textSize(14);
+    p.fill(r, g, b);
+    p.text("Blur", p.width/2 - 410, p.height - 200);
+    p.text("Bottom Right",  p.width/2 - 210, p.height - 200);
+    p.text( "Top Left",  p.width/2 - 10 , p.height - 200);
+    p.text("Center", p.width/2 + 190, p.height - 200 );
   };
 };
 
@@ -96,9 +101,9 @@ var audioplayer = function (p) {
   // let vbuttons=[];
   var x, w, h;
   //audio variables
-  let amp;
   let audio_one, audio_two, audio_three, audio_four;
   let volumeone, speedone, volumetwo, speedtwo, volumethree, speedthree, volumefour, speedfour;
+  let butcolor = 255; 
 
   // preload webpage audios
   p.preload = function () {
@@ -111,11 +116,12 @@ var audioplayer = function (p) {
 
   p.mouseClicked = function () {
     for (var i = 0; i < pbuttons.length; i++) {
-      pbuttons[i].click(p.mouseX, p.mouseY);
+      pbuttons[i].click(p.mouseX, p.mouseY, butcolor);
     }
   };
 
-  function Playbutton(xpos, ypos, w, h, r) {
+  function Playbutton(butcolor, xpos, ypos, w, h, r) {
+    this.color = butcolor; 
     this.x = xpos;
     this.y = ypos;
     this.w = w;
@@ -123,10 +129,7 @@ var audioplayer = function (p) {
     this.r = r;
     // is button clicked set to false
     this.audio_one, this.audio_two, this.audio_three, this.audio_four;
-    
-  
     this.click = function (mx, my) {
-      // print(this.audio_one);
       // Check to see if a point is inside the rectangle
       if (
         mx > this.x &&
@@ -139,17 +142,19 @@ var audioplayer = function (p) {
           audio_one.setVolume(volumeone.value());
           audio_one.rate(speedone.value());
           this.audio_one = true;
-          // amp.setInput(audio_one);
           audio_one.loop();
+          this.color = 150; 
           return;
         } else if (!this.audio_two && p.mouseY > 190 && p.mouseY < 240) {
           audio_two.setVolume(volumetwo.value());
           audio_two.rate(speedtwo.value());
           audio_two.loop();
           this.audio_two = true;
+          this.color = 150; 
           return;
         } else if (this.audio_one && p.mouseY > 80 && p.mouseY < 130) {
           this.audio_one = false;
+          this.color = 255; 
           audio_one.pause();
           return;
         } else if (this.audio_two && p.mouseY > 190 && p.mouseY < 240) {
@@ -157,26 +162,31 @@ var audioplayer = function (p) {
           audio_three.rate(speedthree.value());
           audio_two.pause();
           this.audio_two = false;
+          this.color = 255; 
           return;
         } else if (this.audio_three && p.mouseY > 300 && p.mouseY < 350) {
           audio_three.pause();
           this.audio_three = false;
+          this.color = 255; 
           return;
         } else if (!this.audio_three && p.mouseY > 300 && p.mouseY < 350) {
           audio_three.setVolume(volumethree.value());
           audio_three.rate(speedthree.value());
           this.audio_three = true;
           audio_three.loop();
+          this.color = 150; 
           return;
         } else if (this.audio_four && p.mouseY > 410 && p.mouseY < 460) {
           audio_four.pause();
           this.audio_four = false;
+          this.color = 255; 
           return;
         } else if (!this.audio_four && p.mouseY > 410 && p.mouseY < 460) {
           audio_four.setVolume(volumefour.value());
           audio_four.rate(speedfour.value());
           this.audio_four = true;
           audio_four.loop();
+          this.color = 150; 
           return;
         } else {
           // print("WRONG");
@@ -186,7 +196,7 @@ var audioplayer = function (p) {
     };
     this.display = function () {
       p.rectMode(p.CORNER);
-      p.fill(255);
+      p.fill(this.color);
       p.stroke('black');
       p.strokeWeight(0.5);
       p.rect(this.x, this.y, this.w, this.h);
@@ -194,7 +204,7 @@ var audioplayer = function (p) {
       p.fill(0);
       p.textSize(10);
       p.text("Play", this.x + 15, this.y + 20);
-      console.log(volumeone.value()); 
+       
     };
   }
 
@@ -249,27 +259,15 @@ var audioplayer = function (p) {
     speedfour.position(160, 540);
     speedfour.style("width", "100px");
 
-    // audio toggle values
-    // audio_one.setVolume(volumeone.value());
-    // audio_one.rate(speedone.value());
-
-    // audio_two.setVolume(volumetwo.value());
-    // audio_two.rate(speedtwo.value());
-
-    // audio_three.setVolume(volumethree.value());
-    // audio_three.rate(speedthree.value());
-
-    // audio_four.setVolume(volumefour.value());
-    // audio_four.rate(speedfour.value());
     x = 50;
     w = 50;
     h = 30;
 
     pbuttons = [
-      new Playbutton(x, 80, w, h),
-      new Playbutton(x, 190, w, h),
-      new Playbutton(x, 300, w, h),
-      new Playbutton(x, 410, w, h),
+      new Playbutton(255, x, 80, w, h),
+      new Playbutton(255, x, 190, w, h),
+      new Playbutton(255, x, 300, w, h),
+      new Playbutton(255, x, 410, w, h),
     ];
   };
 
